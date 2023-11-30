@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
-const Q3 = () => {
-  const [name, setName] = useState('?');
-  const [gender, setGender] = useState('?')
-  const [age, setAge] = useState('?');
-  const [loc, setLocation] = useState('?');
-  const [mail, setMail] = useState('?');
-  const [mo, setMobileno] = useState('?');
+class Q3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Dhruv",
+      age: "?",
+      mobno: "9638527410",
+      email: "Dhruv2209@gmail.com",
+    };
+  }
 
+  componentDidMount() {
+    this.updateInformationAfterDelay();
+  }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Update the name and personal information after 5 seconds
-      setName('Dhruv Patel');
-      setGender('Male');
-      setAge('19');
-      setLocation('Ahmedabad');
-      setMail('f63.dhruvpatel@gmail.com');
-      setMobileno('9638527410');
+  updateInformationAfterDelay = () => {
+    setTimeout(() => {
+      this.setState({
+        name: "Patel Dhruv",
+        age: 19,
+        mobno: "1234567890",
+        email: "f63.dhruvpatel@gmail.com",
+      });
     }, 5000);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  render() {
+    return (
+      <div>
+        <h1>Name: {this.state.name}</h1>
+        <h2>Age: {this.state.age}</h2>
+        <h3>Mobile Number: {this.state.mobno}</h3>
+        <h4>Email: {this.state.email}</h4>
+      </div>
+    );
+  }
+}
 
-  return (
-    <div>
-      <h1>Name: {name}</h1>
-      <h2>Gender: {gender}</h2>
-      <h3>Age: {age}</h3>
-      <h4>Location: {loc}</h4>
-      <h5>Mail: {mail}</h5>
-      <h6>Mobileno: {mo}</h6>
-    </div>
-  );
-};
-
-export default Q3;
+export default Q3;
